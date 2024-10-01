@@ -16,3 +16,4 @@
 1. https://habr.com/ru/articles/327220/ - робот-бармен на Raspberry Pi и GO.
 2. https://github.com/partyrobotics/bartendro - ссылка на репозиторий с аналогом проекта под названием Bartendro.
 ## **<u>Эскиз проекта</u>**
+![alt text](https://github.com/EatinPizzaKitten/robo-bartender/blob/main/extras/Screenshot_1.jpg)
