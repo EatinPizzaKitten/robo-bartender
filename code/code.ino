@@ -13,6 +13,8 @@ bool pressed2 = 0;
 L298NX2 motor(IN1, IN2, IN3, IN4);
 
 unsigned short theSpeed = 255;
+int work_time = 1000;
+
 
 void setup()
 {
@@ -23,19 +25,29 @@ void setup()
 
 void loop()
 {
-  if (digitalRead(Button1) == 1 && !pressed1) {
+  bool b1state = digitalRead(Button1);
+  if (b1state && !pressed1) {
     motor.forwardA();
-    delay(5000);
+    delay(1000);
     motor.stopA();
     pressed1 = 1;
-  } if (digitalRead(Button2) == 1 && !pressed2) {
+  } else if (pressed1) {
+    motor.stopA();
+  } 
+  if (!b1state) {
+    pressed1 = 0;
+  }
+
+  bool b2state = digitalRead(Button2);
+  if (b2state && !pressed2) {
     motor.forwardB();
-    delay(5000);
+    delay(1000);
     motor.stopB();
     pressed2 = 1;
-  } if (digitalRead(Button1) == 0) {
-    pressed1 = 0;
-  } if (digitalRead(Button2) == 0) {
+  } else if (pressed2) {
+    motor.stopB();
+  } 
+  if (!b2state) {
     pressed2 = 0;
   }
 }
