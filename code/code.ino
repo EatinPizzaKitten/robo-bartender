@@ -25,10 +25,11 @@ void setup()
 
 void loop()
 {
-  bool b1state = digitalRead(Button1);
+  
+  bool b1state = digitalRead(Button1); // without alcohol
   if (b1state && !pressed1) {
     motor.forwardA();
-    delay(1000);
+    delay(60000);
     motor.stopA();
     pressed1 = 1;
   } else if (pressed1) {
@@ -38,11 +39,14 @@ void loop()
     pressed1 = 0;
   }
 
-  bool b2state = digitalRead(Button2);
+  bool b2state = digitalRead(Button2); // with alcohol
   if (b2state && !pressed2) {
     motor.forwardB();
-    delay(1000);
+    motor.forwardA();
+    delay(15000);
     motor.stopB();
+    delay(45000);
+    motor.stopA();
     pressed2 = 1;
   } else if (pressed2) {
     motor.stopB();
